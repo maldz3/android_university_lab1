@@ -41,7 +41,7 @@ public class BestSellerBooksRecyclerViewAdapter extends RecyclerView.Adapter<Bes
         holder.mBookTitle.setText(books.get(position).title);
         holder.mBookAuthor.setText(books.get(position).author);
         holder.mBookDescription.setText(books.get(position).description);
-//        holder.mRanking.setText(books.get(position).rank);
+        holder.mRanking.setText(Integer.toString(books.get(position).rank));
 //        holder.mBuyButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
