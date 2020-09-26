@@ -1,5 +1,6 @@
 package com.codepath.bestsellerlistapp;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.codepath.bestsellerlistapp.models.BestSellerBook;
 
 import java.util.List;
@@ -20,12 +22,14 @@ import java.util.List;
  */
 public class BestSellerBooksRecyclerViewAdapter extends RecyclerView.Adapter<BestSellerBooksRecyclerViewAdapter.BookViewHolder> {
 
+    Context context;
     private final List<BestSellerBook> books;
     private final OnListFragmentInteractionListener mListener;
 
-    public BestSellerBooksRecyclerViewAdapter(List<BestSellerBook> items, OnListFragmentInteractionListener listener) {
+    public BestSellerBooksRecyclerViewAdapter( Context context, List<BestSellerBook> items, OnListFragmentInteractionListener listener) {
         books = items;
         mListener = listener;
+        this.context = context;
     }
 
     @Override
@@ -42,6 +46,7 @@ public class BestSellerBooksRecyclerViewAdapter extends RecyclerView.Adapter<Bes
         holder.mBookAuthor.setText(books.get(position).author);
         holder.mBookDescription.setText(books.get(position).description);
         holder.mRanking.setText(Integer.toString(books.get(position).rank));
+        Glide.with(context).load(books.get(position).bookImageUrl).into(holder.mImageUrl);
 //        holder.mBuyButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
